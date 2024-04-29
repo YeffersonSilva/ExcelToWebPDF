@@ -1,9 +1,11 @@
 var Reader = require("./Reader");
 var reader = new Reader();
+var Processor = require("./Processor");
 
 async function main() {
     try {
         var data = await reader.asyncRead("./src/CotizacionDolar.csv");
+        Processor.Process(data);
         console.log(data);
     } catch (error) {
         console.error("Error in main execution:", error);
