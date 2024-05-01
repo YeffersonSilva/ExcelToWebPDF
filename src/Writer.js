@@ -6,13 +6,15 @@ class Writer{
         this.writer = util.promisify(fs.writeFile);
     }
 
-    async Write(filepath, data) {
+    async Writer(filepath, data) {
         try {
-            return await this.writer(filepath, data);
+            await this.writer(filepath, data);
+            return true
         } catch (err) {
             console.error("Failed to write file:", err);
-            return undefined;
+            return false;
         }
     }
 
 }
+module.exports = Writer;
