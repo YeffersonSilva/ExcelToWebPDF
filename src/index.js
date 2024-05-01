@@ -4,6 +4,7 @@ var Processor = require("./Processor");
 var Table = require("./Table");
 var HtmlParser = require("./HtmlParser");
 var Writer = require("./Writer");
+var PdfWriter = require("./PdfWriter");
 
 var leitor = new Reader();
 escritor = new Writer();
@@ -15,7 +16,8 @@ async function main() {
     var user = new Table(dataProcessor);
 
     var html = await HtmlParser.Parse(user);
-    escritor.Writer(Date.now()+".html", html);
+    escritor.Writer(Date.now() + ".html", html);
+    PdfWriter.WritePDF(Date.now() + ".PDF", html);
 
     console.log(html);
     console.log(user.RowCount);
